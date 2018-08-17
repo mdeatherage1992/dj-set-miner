@@ -1,0 +1,41 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="comment">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="video">
+    <%= f.label :video %><br>
+    <%= f.text_area :video %>
+  </div>
+  <div class="genre">
+    <%= f.label :genre %><br>
+    <input type="checkbox" name="genre_1" value="Deep">Deep<br>
+    <input type="checkbox" name="genre_2" value="Minimal">Minimal<br>
+    <input type="checkbox" name="genre_3" value="Hard">Hard<br>
+    <input type="checkbox" name="genre_4" value="Techno" checked>Techno<br>
+    <%= f.text_area :genre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
