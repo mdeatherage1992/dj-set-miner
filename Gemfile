@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails' 
+gem 'rails'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'pry'
 # Use sqlite3 as the database for Active Record
 
 #so that we can use the 'div_for' method

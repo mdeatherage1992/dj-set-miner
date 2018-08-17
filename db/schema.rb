@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 11) do
+ActiveRecord::Schema.define(version: 12) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 11) do
     t.integer  "user_id"
     t.string   "video"
     t.string   "genre"
+    t.string   "post_genre"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

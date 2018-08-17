@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
   resources :videos
+  resources :genres
+  resources :posts_genres
   devise_for :users
   resources :posts do
   member do

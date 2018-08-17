@@ -1,5 +1,5 @@
 <div class="page-header">
- <h1><a href="<%= @post.url %>"><%= @post.title %></a><br> <small>Submitted by <%= @post.user.email %></small></h1>
+ <h1><a href="<%= @post.url %>"><%= @post.title %></a><br> <small>Submitted by <%= @post.user.name %></small><br><small>Genre: <%= @post.post_genre %></small></h1>
 </div>
 <div class="btn-group">
  <%= link_to 'Visit URL', @post.url, class: "btn btn-primary" %>
@@ -7,10 +7,8 @@
 <div class="video">
  (sound cloud embed)
 </div>
-<div class="genres">
- <% @post.genres.each do |genre| %>
- <%= genre %>
- <% end %>
+<div class="genre">
+ <%= @post.genre %>
 </div>
 <% if @post.user == current_user %>
  <div class="btn-group">
