@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 11) do
 
   create_table "post_genres", force: :cascade do |t|
     t.integer  "post_id"
-    t.integer  "genrex_id"
+    t.integer  "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genrex_id"], name: "index_post_genres_on_genrex_id"
+    t.index ["genre_id"], name: "index_post_genres_on_genre_id"
     t.index ["post_id"], name: "index_post_genres_on_post_id"
   end
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 11) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.text     "video"
+    t.string   "video"
     t.string   "genre"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -65,17 +65,6 @@ ActiveRecord::Schema.define(version: 11) do
     t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "videos", force: :cascade do |t|
-    t.integer  "post_id"
-    t.text     "body"
-    t.text     "embed_link"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_videos_on_post_id"
-    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
   create_table "votes", force: :cascade do |t|

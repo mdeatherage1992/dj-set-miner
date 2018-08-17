@@ -5,7 +5,12 @@
  <%= link_to 'Visit URL', @post.url, class: "btn btn-primary" %>
 </div>
 <div class="video">
- <%= link_to 'View Video', @post.video %>
+ (sound cloud embed)
+</div>
+<div class="genres">
+ <% @post.genres.each do |genre| %>
+ <%= genre %>
+ <% end %>
 </div>
 <% if @post.user == current_user %>
  <div class="btn-group">
