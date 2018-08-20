@@ -82,6 +82,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :comment, :post_genre, :video)
+      params.require(:post).permit(:title, :url, :comment, :post_genre, :video, genre_ids:[], genres_attributes: [:name])
     end
 end
