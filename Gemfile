@@ -7,6 +7,8 @@ gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'pry'
+gem 'omniauth-facebook'
+ gem 'dotenv-rails'
 # Use sqlite3 as the database for Active Record
 
 #so that we can use the 'div_for' method
