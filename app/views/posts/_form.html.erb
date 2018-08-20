@@ -27,11 +27,13 @@
     <%= f.label :video %><br>
     <%= f.text_field :video %>
   </div>
-  <div class="genre"> <%=f.label :genre_ids, "What is the Genre?" %><br>
-    <%= f.collection_check_boxes :genre, Genre.all, :id, :name %>
-    <%= f.fields_for :genres, @post.genres.build do |genre_attributes| %>
-      <%= genre_attributes.text_field :name, placeholder: "Add Genre Here!"  %>
-    <% end %> </div>
+  <div class="genre">
+  <%=f.label :post_genre %><br>
+  <%= f.fields_for :post_genres_attributes do |attribute| %>
+    <%= attribute.text_field :name %>
+    <%= attribute.collection_select :genre_id, Genre.all, :id, :name %>
+    <% end %>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>

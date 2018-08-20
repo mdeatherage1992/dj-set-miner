@@ -31,13 +31,13 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
-  # GET /posts/1/edit
+
   def edit
   end
 
-  # POST /posts
-  # POST /posts.json
+
   def create
+
   @post = current_user.posts.build(post_params)
 respond_to do |format|
     if @post.save
@@ -82,6 +82,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :comment, :post_genre, :video, genre_ids:[], genres_attributes: [:name])
+      params.require(:post).permit(:title, :url, :post_genre, :comment, :video, genre_ids:[], post_genres_attributes: [:name])
     end
 end
