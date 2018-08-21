@@ -4,7 +4,7 @@
     <h2>
         <%= link_to post.title, post %><br>
         <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %></small><br>
-        <small class= "genre">Genre: <%= post.post_genre %></small>
+        <small class= "genre">Genre: <%= post.genre %></small>
     </h2>
 <div class="btn-group">
       <a class="btn btn-default btn-sm" href="<%= post.url %>">Visit Link</a>

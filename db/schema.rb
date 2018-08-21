@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 13) do
+ActiveRecord::Schema.define(version: 20180821190407) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 13) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "post_id"
+    t.index ["post_id"], name: "index_genres_on_post_id"
   end
 
   create_table "post_genres", force: :cascade do |t|
@@ -65,6 +67,8 @@ ActiveRecord::Schema.define(version: 13) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

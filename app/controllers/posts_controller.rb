@@ -28,11 +28,13 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = current_user.posts.build
+    @post = Post.new
+    @post.genres.build
   end
 
 
   def edit
+    @post.genres.build
   end
 
 
@@ -82,6 +84,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :post_genre, :comment, :video )
+      params.require(:post).permit(:title, :url, :comment, :video, genres_attributes: [:name] )
     end
 end
