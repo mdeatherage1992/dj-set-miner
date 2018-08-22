@@ -9,7 +9,7 @@
  <%= link_to 'Visit URL', @post.url, class: "btn btn-primary" %>
 </div>
 <div class="video">
-  <iframe <%= @post.video %>> </iframe>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="<%=@post.video %>"> </iframe>
 </div>
 <div class="genre">
  <%= @post.genre %>
