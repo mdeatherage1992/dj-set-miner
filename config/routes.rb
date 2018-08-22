@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :videos
   resources :genres
   resources :posts_genres
-  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks" }
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks" }
   resources :posts do
   member do
     put "like", to: "posts#upvote"
