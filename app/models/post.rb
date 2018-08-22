@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   def genres_attributes=(genre_attributes)
   genre_attributes.values.each do |genre_attribute|
-    if !genre_attribute==nil
+    if genre_attribute
       genre = Genre.find_or_create_by(genre_attribute)
       self.genres << genre
     end
