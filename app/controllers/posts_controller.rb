@@ -39,7 +39,6 @@ class PostsController < ApplicationController
 
 
   def create
-
   @post = current_user.posts.build(post_params)
 respond_to do |format|
     if @post.save
@@ -84,6 +83,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :comment, :video, genres_attributes: [:name] )
+      params.require(:post).permit(:title, :url, :comment, :video, genre_ids:[], genres_attributes: [:name] )
     end
 end

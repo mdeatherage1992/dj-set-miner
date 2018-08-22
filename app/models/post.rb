@@ -5,6 +5,16 @@ class Post < ActiveRecord::Base
   has_many :genres
   accepts_nested_attributes_for :genres, reject_if: :all_blank
 
+
+  def genres_attributes=(genre_attributes)
+  genre_attributes.values.each do |genre_attribute|
+    if !genre_attribute==nil
+      genre = Genre.find_or_create_by(genre_attribute)
+      self.genres << genre
+    end
+  end
+end
+
  #  def post_genres_attributes=(genre_attributes)
  # genre_attributes.values.each do |genre_attribute|
  #     @genre = Genre.find_by(name: genre_attribute)
