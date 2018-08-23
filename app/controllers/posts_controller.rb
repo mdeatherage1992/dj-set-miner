@@ -19,6 +19,21 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @users = User.all
+    @genres = Genre.all
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      if @user.nil?
+        redirect_to posts_path, alert: "User not found"
+      else
+        @posts = @user.posts
+      end
+    elsif !params[:genre].blank? && params[:user].blank?
+      genre = Post.by_genre(params[:genre])
+      @posts = genre.by_genre(params[:genre])
+     else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1

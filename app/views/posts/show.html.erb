@@ -9,7 +9,11 @@
  <%= link_to 'Visit URL', @post.url, class: "btn btn-primary" %>
 </div>
 <div class="video">
+  <% if @post.video =~ URI::regexp %>
   <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="<%=@post.video %>"> </iframe>
+  <% else %>
+  <h5> No Video for this post. Please visit the link </h5>
+  <% end %>
 </div>
 <div class="genre">
  <%= @post.genre %>

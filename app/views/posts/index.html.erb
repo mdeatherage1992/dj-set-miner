@@ -1,3 +1,9 @@
+<h3>Filter Posts:</h3>
+<div class="fluid">
+  <%= form_tag("/posts", method: "get") do %>
+    Genre: <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank: false %>
+    <%= submit_tag "Filter" %>
+  <% end %>
 
 <% @posts.each do |post| %>
   <div class="link row clearfix">
@@ -24,37 +30,3 @@
     </div>
    </div>
   <% end %>
-
-
-<!-- <p id="notice"><%= notice %></p>
-
-<h1>Prep Rumors</h1>
-<h3>Your Underground Network for Prep Sports rumors, commits, and chatter</h3>
-<table>
-  <thead>
-  <tr>
-    <th>Title   </th>
-    <th>Url  </th>
-    <th>Comment</th>
-    <th colspan="3"></th>
-  </tr>
-</thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <h5><td><%= post.title %></td></h5>
-      <td><%= post.url %></td>
-      <td><%= post.comment %></td>
-      <td><%= link_to 'Show', post %></td>
-<% if post.user == current_user %>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tr>
-      <%end %>
-
-  </tbody>
-</table><br><br><br>
-<%= link_to 'Signed In? Make a New Post', new_post_path %>
-<br> -->

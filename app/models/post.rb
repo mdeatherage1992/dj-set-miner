@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   has_many :genres
   accepts_nested_attributes_for :genres, reject_if: :all_blank
-
+  validates :title, :url, presence: true
 
   def genres_attributes=(genre_attributes)
   genre_attributes.values.each do |genre_attribute|
@@ -15,19 +15,13 @@ class Post < ActiveRecord::Base
   end
 end
 
- #  def post_genres_attributes=(genre_attributes)
- # genre_attributes.values.each do |genre_attribute|
- #     @genre = Genre.find_by(name: genre_attribute)
- #     if @genre == nil
- #       @genre = Genre.create(:name => genre_attribute)
- #       @genre.save
- #       self.update(:post_genre => @genre.name)
- #   else
- #     @genre.save
- #      self.update(:post_genre => @genre.name)
- #        end
- #      end
- #    end
+
+  def self.by_genre(genre_id)
+  where(genre_id: genre_id)
+  end
+
+
+
 
      #check of genre id is empty or not
      # if it wasn't empty , find the genre with that ID, and set that genre to be the post genre's genre.
