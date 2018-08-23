@@ -24,11 +24,10 @@ class PostsController < ApplicationController
     if !params[:genre].blank?
       @posts.each do |post|
         if post.genres.any? == params[:genre]
-          @posts << post
+          @filter << post
         end
+        @posts == @filter
       end
-    else
-      @posts = Post.all
     end
   end
 
