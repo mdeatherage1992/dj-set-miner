@@ -17,23 +17,22 @@ class PostsController < ApplicationController
   end
 
   def index
+    @filter = []
     @posts = Post.all
     @users = User.all
     @genres = Genre.all
-    if params[:user_id]
-      @user = User.find_by(id: params[:user_id])
-      if @user.nil?
-        redirect_to posts_path, alert: "User not found"
-      else
-        @posts = @user.posts
+    if !params[:genre].blank?
+      @posts.each do |post|
+        if post.genres.any? == params[:genre]
+          @posts << post
+        end
       end
-    elsif !params[:genre].blank? && params[:user].blank?
-      genre = Post.by_genre(params[:genre])
-      @posts = genre.by_genre(params[:genre])
-     else
+    else
       @posts = Post.all
     end
   end
+
+
 
 
   def show
@@ -92,7 +91,7 @@ end
       @post = Post.find(params[:id])
     end
 
-    
+
     def post_params
       params.require(:post).permit(:title, :url, :comment, :video, genre_ids:[], genres_attributes: [:name] )
     end

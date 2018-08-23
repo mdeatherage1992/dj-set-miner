@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20180821190407) do
     t.string   "video"
     t.string   "genre"
     t.string   "post_genre"
+    t.integer  "genre_id"
+    t.index ["genre_id"], name: "index_posts_on_genre_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

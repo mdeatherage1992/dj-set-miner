@@ -1,9 +1,16 @@
 <h3>Filter Posts:</h3>
-<div class="fluid">
+
+<!-- <div class="fluid">
   <%= form_tag("/posts", method: "get") do %>
     Genre: <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank: false %>
     <%= submit_tag "Filter" %>
-  <% end %>
+  <% end %> -->
+
+  <%= form_tag '/posts', :method => :get do %>
+  Genre: <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank: false %>
+  <%= submit_tag 'Filter' %>
+      <% end %>
+
 
 <% @posts.each do |post| %>
   <div class="link row clearfix">

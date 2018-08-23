@@ -15,9 +15,8 @@ class Post < ActiveRecord::Base
   end
 end
 
-
   def self.by_genre(genre_id)
-  where(genre_id: genre_id)
+    where(genre_id: genre_id)
   end
 
 

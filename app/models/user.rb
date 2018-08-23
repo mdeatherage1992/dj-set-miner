@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
     end
   end
 
-       def self.newest_users
-         all.order(id: :desc).limit(3)
-       end
+      
 
 end
