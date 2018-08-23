@@ -17,19 +17,15 @@ class PostsController < ApplicationController
   end
 
   def index
-    @filter = []
     @posts = Post.all
     @users = User.all
     @genres = Genre.all
     if !params[:genre].blank?
-      @posts.each do |post|
-        if post.genres.any? == params[:genre]
-          @filter << post
-        end
-        @posts == @filter
-      end
+      @posts = Post.by_genre(params[:genre].to_i)
     end
   end
+
+
 
 
 

@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(version: 20180821190407) do
     t.index ["post_id"], name: "index_genres_on_post_id"
   end
 
-  create_table "post_genres", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
-    t.index ["genre_id"], name: "index_post_genres_on_genre_id"
-    t.index ["post_id"], name: "index_post_genres_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
@@ -49,9 +39,8 @@ ActiveRecord::Schema.define(version: 20180821190407) do
     t.integer  "user_id"
     t.string   "video"
     t.string   "genre"
-    t.string   "post_genre"
-    t.integer  "genre_id"
-    t.index ["genre_id"], name: "index_posts_on_genre_id"
+    t.integer  "genre_ids"
+    t.index ["genre_ids"], name: "index_posts_on_genre_ids"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
