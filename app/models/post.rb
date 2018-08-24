@@ -15,9 +15,17 @@ class Post < ActiveRecord::Base
   end
 end
 
-  def self.by_genre(genre_id)
-    where(genre_ids: genre_id)
-    end
+def self.by_genre(genre_id)
+filtered_posts = []
+
+Post.all.each do |post|
+  if post.genre_ids.include?(genre_id)
+    filtered_posts << post
+  end
+end
+
+filtered_posts
+end
 
 
 
