@@ -1,28 +1,24 @@
-== README
+DJ Set Miner
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description:
+DJ Set Miner is the underground's place to post DJ sets that aren't going to get lost in the fray
+of Soundcloud, Mixcloud, and the like. You can create an account, directly embed your set, and let
+the community discuss, vote, and comment on your work! More eyes = More knowledge.
 
-Things you may want to cover:
+Features:
+- Facebook Sign-in
+- Interactive voting
+- Commenting
+- Soundcloud Embeds
 
-* Ruby version
+Coming Soon:
+- Track list requirement : How can we get more people to your page? Giving them something in return!
+No one likes to love a track they can't find. By posting to our site, you will be asked how many tracks
+are in your set. With that answer, you will be given fields to input your track names and times. For a
+Community to thrive, you must respect the artists and pay your work forward to our listeners!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Installation:
+- Fork & Clone this Git Repository
+- Run "Bundle Install"
+- Run "Rake db:migrate"
+- Open your Localhost:3000 and enjoy the music!
