@@ -33,13 +33,16 @@ ActiveRecord::Schema.define(version: 20180821190407) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
-    t.string   "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "video"
     t.string   "genre"
     t.integer  "genre_ids"
+    t.integer  "comment_ids"
+    t.string   "comment"
+    t.index ["comment_ids"], name: "index_posts_on_comment_ids"
     t.index ["genre_ids"], name: "index_posts_on_genre_ids"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

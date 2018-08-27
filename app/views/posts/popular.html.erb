@@ -1,0 +1,10 @@
+<% @posts.each do |post| %>
+  <div class="link row clearfix">
+    <h2>
+        <%= link_to post.title, post %><br>
+        <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %></small><br>
+        <small class= "genre">
+          Genre: <% post.genres.each do |genre| %>
+                      <%= genre.name %>
+                  <% end %>
+                  <% end %>

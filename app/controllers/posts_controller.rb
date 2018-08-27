@@ -25,7 +25,9 @@ class PostsController < ApplicationController
     end
   end
 
-
+  def popular
+    @posts = Post.popular
+  end
 
 
 
@@ -88,6 +90,6 @@ end
 
 
     def post_params
-      params.require(:post).permit(:title, :url, :comment, :video, genre_ids:[], genres_attributes: [:name] )
+      params.require(:post).permit(:title, :url, :description, :video, genre_ids:[], genres_attributes: [:name] )
     end
 end

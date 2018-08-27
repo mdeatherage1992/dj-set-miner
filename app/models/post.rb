@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   has_many :genres
   accepts_nested_attributes_for :genres, reject_if: :all_blank
   validates :title, :url, presence: true
+  scope :popular, -> { where("comment").count > 1 }
+
 
   def genres_attributes=(genre_attributes)
   genre_attributes.values.each do |genre_attribute|

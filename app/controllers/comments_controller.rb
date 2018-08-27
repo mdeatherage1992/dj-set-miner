@@ -25,6 +25,10 @@ respond_to do |format|
   end
 
 
+
+
+
+
   def update
     respond_to do |format|
       if @comment.update(comment_params)
