@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180821190407) do
     t.integer  "genre_ids"
     t.integer  "comment_ids"
     t.string   "comment"
+    t.integer  "audience"
     t.index ["comment_ids"], name: "index_posts_on_comment_ids"
     t.index ["genre_ids"], name: "index_posts_on_genre_ids"
     t.index ["user_id"], name: "index_posts_on_user_id"

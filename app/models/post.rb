@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :genres
   accepts_nested_attributes_for :genres, reject_if: :all_blank
   validates :title, :url, presence: true
-  scope :popular, -> { where("comment").count > 1 }
+  scope :popular, -> { where("audience > 200")}
 
 
   def genres_attributes=(genre_attributes)
@@ -16,6 +16,10 @@ class Post < ActiveRecord::Base
     end
   end
 end
+
+
+
+
 
 def self.by_genre(genre_id)
 filtered_posts = []
