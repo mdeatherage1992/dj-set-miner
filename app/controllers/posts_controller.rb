@@ -38,6 +38,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @genres = Genre.all
     @post.genres.build
   end
 

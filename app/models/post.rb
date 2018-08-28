@@ -2,7 +2,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   acts_as_votable
   has_many :comments
-  has_many :genres
+  has_many :post_genres
+  has_many :genres, through: :post_genres
   accepts_nested_attributes_for :genres, reject_if: :all_blank
   validates :title, :url, presence: true
   scope :popular, -> { where("audience > 200")}
