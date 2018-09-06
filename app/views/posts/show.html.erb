@@ -47,14 +47,20 @@
 </div>
 <div class="comments">
 </div>
-
-<%= form_for(@comment) do |f| %>
+<div id="new_comment">
+<%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
 <div class="field">
 <p><%= f.text_area :body, class: "form-control" %></p>
 </div>
 <br>
 <p><%= f.submit "Add Comment", class: "btn btn-primary" %></p>
 <% end %>
+</div>
+
+<div class="comment">
+  <ol>
+  </ol>
+</div>
 
 <!-- <%= simple_form_for [@post, Comment.new] do |f| %>
  <div class="field">
