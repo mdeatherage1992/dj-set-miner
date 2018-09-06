@@ -7,7 +7,7 @@ $(document).ready(function(){
 
       $("div.comments").html(response)
 
-    });
+    })
     e.preventDefault();
   })
 })
