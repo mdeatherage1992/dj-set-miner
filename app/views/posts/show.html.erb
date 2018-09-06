@@ -43,7 +43,8 @@
  <%= @post.comments.count %> comments
 </h3>
 <div id="comments">
- <%= render :partial => @post.comments %>
+  <%= link_to "Load Comments", post_comments_path(@post) %>
+ <!-- <%= render :partial => @post.comments %> -->
 </div>
 <%= simple_form_for [@post, Comment.new] do |f| %>
  <div class="field">

@@ -1,31 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Comments</h1>
+For: <%= @post.title %>
 
 <table>
   <thead>
-    <tr>
-      <th>Link</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
     <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.link_id %></td>
-        <td><%= comment.body %></td>
-        <td><%= comment.user %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+          <p class="lead"><%= comment.body %></p>
+          <p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.user.name %></small></p><br>
+    <div class="btn-group">
+       <% if comment.user == current_user %>
+        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %><br>
+        <% end %>
+
+     </div>
+
   </tbody>
 </table>
 
 <br>
-
+<% end %>
 <%= link_to 'New Comment', new_comment_path %>
