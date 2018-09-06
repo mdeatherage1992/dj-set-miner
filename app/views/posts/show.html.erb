@@ -44,14 +44,22 @@
 </h3>
 <div id="comments">
   <%= link_to "Load Comments", post_comments_path(@post), :class => "load_comments" %>
- <!-- <%= render :partial => @post.comments %> -->
 </div>
 <div class="comments">
 </div>
-<%= simple_form_for [@post, Comment.new] do |f| %>
+
+<%= form_for(@comment) do |f| %>
+<div class="field">
+<p><%= f.text_area :body, class: "form-control" %></p>
+</div>
+<br>
+<p><%= f.submit "Add Comment", class: "btn btn-primary" %></p>
+<% end %>
+
+<!-- <%= simple_form_for [@post, Comment.new] do |f| %>
  <div class="field">
   <%= f.text_area :body, class: "form-control" %>
  </div>
  <br>
  <%= f.submit "Add Comment", class: "btn btn-primary" %>
-<% end %>
+<% end %> -->
