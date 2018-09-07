@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
@@ -40,19 +39,19 @@ respond_to do |format|
   #   end
   # end
   #
-  def create
-    @comment = @post.comments.build(comment_params)
-    if @comment.save
-      # I need to render something that just has the LI I want...
-      # why not just create a comments/show view that shows the LI of one comment?
-      render 'comments/show', :layout => false
-    else
-      render "posts/show"
-    end
-  end
-
-  def show
-  end
+  # def create
+  #   @comment = @post.comments.build(comment_params)
+  #   if @comment.save
+  #     # I need to render something that just has the LI I want...
+  #     # why not just create a comments/show view that shows the LI of one comment?
+  #     render 'comments/show', :layout => false
+  #   else
+  #     render "posts/show"
+  #   end
+  # end
+  #
+  # def show
+  # end
 
 
 

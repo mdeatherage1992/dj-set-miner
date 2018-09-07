@@ -51,17 +51,44 @@
 
 <%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
 <%= f.text_area :body %><br>
-<%= f.submit %>
+<%= f.submit "Submit", data: { disable_with: false } %>
 <% end %>
 
 <%= button_tag 'Previous', class:"js-prev", data: {id: @post.id} %>
 <%= button_tag 'Next', class: "js-next", data: {id: @post.id} %>
 
+<!-- <script>$(function(){
+  $("#new_comment").on("submit", function(e){
+      e.preventDefault();
+    url = this.action
+    console.log(url)
 
-<!-- <%= simple_form_for [@post, Comment.new] do |f| %>
- <div class="field">
-  <%= f.text_area :body, class: "form-control" %>
- </div>
- <br>
- <%= f.submit "Add Comment", class: "btn btn-primary" %>
-<% end %> -->
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'comment': {
+        'body': $('#comment_body').val()
+      }
+    };
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response){
+        $("#comment_body").val("");
+        debugger
+        var $ol = $("div.comments ol")
+        $ol.append(response);
+      }
+    });
+  })
+});</script> -->
+
+
+
+ <!-- <%= simple_form_for [@post, Comment.new] do |f| %>
+//  <div class="field">
+//   <%= f.text_area :body, class: "form-control" %>
+//  </div>
+//  <br>
+//  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+// <% end %> -->

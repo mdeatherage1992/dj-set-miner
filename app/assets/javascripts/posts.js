@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 $(function(){
   $("#new_comment").on("submit", function(e){
+      e.preventDefault();
     url = this.action
     console.log(url)
 
@@ -29,13 +30,19 @@ $(function(){
       data: data,
       success: function(response){
         $("#comment_body").val("");
-        var $ol = $("div.comments ol")
-        $ol.append(response);
+        var $ol = $("div.comments ol")[0]
+        //ol.append.child
+        $ol.append(response[]);
       }
     });
-    e.preventDefault();
   })
 });
+// work with class to make prototype methods
+// function Comment() {
+//   this.id = id
+//   this.body = body
+//   this.post_id = post_id
+// }
 
 $(function(){
   bindClick()
