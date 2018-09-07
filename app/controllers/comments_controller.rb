@@ -40,17 +40,19 @@ respond_to do |format|
   #   end
   # end
   #
-  # def create
-  #   @comment = @post.comments.build(comment_params)
-  #   if @comment.save
-  #     # I need to render something that just has the LI I want...
-  #     # why not just create a comments/show view that shows the LI of one comment?
-  #     render 'comments/show', :layout => false
-  #   else
-  #     render "posts/show"
-  #   end
-  # end
+  def create
+    @comment = @post.comments.build(comment_params)
+    if @comment.save
+      # I need to render something that just has the LI I want...
+      # why not just create a comments/show view that shows the LI of one comment?
+      render 'comments/show', :layout => false
+    else
+      render "posts/show"
+    end
+  end
 
+  def show
+  end
 
 
 

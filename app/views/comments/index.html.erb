@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<ol>
+  <% @comments.each do |comment| %>
+  <li><%= comment.body %>
+  <%= link_to 'Edit', edit_comment_path(comment) %> |
+  <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+  <% end %>
+</ol>
+
+
+
+
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Listing Comments</h1>
 For: <%= @post.title %>
@@ -9,6 +21,7 @@ For: <%= @post.title %>
 
   <tbody>
     <% @comments.each do |comment| %>
+
           <p class="lead"><%= comment.body %></p>
           <p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.post.user.name %></small></p><br>
     <div class="btn-group">
@@ -23,4 +36,4 @@ For: <%= @post.title %>
 
 <br>
 <% end %>
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_comment_path %> -->

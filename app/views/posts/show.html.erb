@@ -42,25 +42,20 @@
 <h3 class="comments_title">
  <%= @post.comments.count %> comments
 </h3>
-<div id="comments">
+<p>
   <%= link_to "Load Comments", post_comments_path(@post), :class => "load_comments" %>
-</div>
+</p>
 <div class="comments">
-</div>
-<div id="new_comment">
-<%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
-<div class="field">
-<p><%= f.text_area :body, :class => "form-control" %></p>
-</div>
-<br>
-<p><%= f.submit "Add Comment", :class => "btn btn-primary" %></p>
-<% end %>
+<%= render "comments/comment" %>
 </div>
 
-<div class="comment">
-  <ol>
-  </ol>
-</div>
+<%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
+<%= f.text_area :body %><br>
+<%= f.submit %>
+<% end %>
+
+
+
 
 <!-- <%= simple_form_for [@post, Comment.new] do |f| %>
  <div class="field">
