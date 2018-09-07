@@ -25,6 +25,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def api_show
+    raise "hello".inspect
+  end
+
   def popular
     @posts = Post.popular
   end

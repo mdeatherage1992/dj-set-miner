@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   root to:"posts#index"
   get "path/to/popular/page", to: "posts#popular", as: "popular"
 
+
+  get 'api/posts/:id', to: 'posts#api_show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
