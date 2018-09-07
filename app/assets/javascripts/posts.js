@@ -37,7 +37,37 @@ $(function(){
   })
 });
 
+$(function(){
+  bindClick()
+})
 
+function bindClick() {
+  $('.js-prev').on('click', function(e){
+    const id = $(this).data('id')
+
+    fetch(`/api/posts/${id - 1}`)
+    .then(res => res.json() )
+    .then(post=> console.log(post))
+    .catch(err => console.log(err))
+  });
+  $('.js-next').on('click', function(e){
+    const id = $(this).data('id')
+    fetch(`/api/posts/${id + 1}`)
+    .then(res => res.json() )
+    .then(post=> {
+      const newPost = new Post(post.id, post.title,post.body,post.comments)
+      console.log(newPost)
+    })
+    .catch(err => console.log(post))
+  });
+}
+
+function Post(id,title,body,comments) {
+  this.id = id
+  this.title = title
+  this.body = body
+  this.comments = comments
+}
 // $(document).ready(function(){
 //   $('#new_comment').on("submit", function(e){
 //     $.ajax({

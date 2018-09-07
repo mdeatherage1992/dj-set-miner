@@ -54,7 +54,8 @@
 <%= f.submit %>
 <% end %>
 
-
+<%= button_tag 'Previous', class:"js-prev", data: {id: @post.id} %>
+<%= button_tag 'Next', class: "js-next", data: {id: @post.id} %>
 
 
 <!-- <%= simple_form_for [@post, Comment.new] do |f| %>
