@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_post, only: [:index,:show,:edit,:update]
+  before_action :set_post
+  # only: [:index,:show,:edit,:update, :create]
 
   def index
     @comments = @post.comments
-    render 'comments/index', :layout => false
   end
 
   def new
@@ -26,6 +26,30 @@ respond_to do |format|
     end
   end
 
+  #
+  # def index
+  #   @comments = @post.comments
+  #   # It went to implicit rendering
+  #   # render :layout => false
+  #   # render :json => @comments
+  #   # render :layout => false
+  #
+  #   respond_to do |format|
+  #     format.html {render 'index.html', :layout => false}
+  #     format.js {render 'index.js', :layout => false}
+  #   end
+  # end
+  #
+  # def create
+  #   @comment = @post.comments.build(comment_params)
+  #   if @comment.save
+  #     # I need to render something that just has the LI I want...
+  #     # why not just create a comments/show view that shows the LI of one comment?
+  #     render 'comments/show', :layout => false
+  #   else
+  #     render "posts/show"
+  #   end
+  # end
 
 
 
@@ -53,7 +77,7 @@ respond_to do |format|
 private
 
     def set_post
-      @post = Post.find(params[:post_id])
+      @post = Post.find_by(params[:post_id])
     end
 
     def set_comment

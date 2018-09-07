@@ -10,10 +10,10 @@ For: <%= @post.title %>
   <tbody>
     <% @comments.each do |comment| %>
           <p class="lead"><%= comment.body %></p>
-          <p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.user.name %></small></p><br>
+          <p><small>Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by <%= comment.post.user.name %></small></p><br>
     <div class="btn-group">
        <% if comment.user == current_user %>
-        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %><br>
+        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default"%><br>
         <% end %>
 
      </div>

@@ -50,10 +50,10 @@
 <div id="new_comment">
 <%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
 <div class="field">
-<p><%= f.text_area :body, class: "form-control" %></p>
+<p><%= f.text_area :body, :class => "form-control" %></p>
 </div>
 <br>
-<p><%= f.submit "Add Comment", class: "btn btn-primary" %></p>
+<p><%= f.submit "Add Comment", :class => "btn btn-primary" %></p>
 <% end %>
 </div>
 
