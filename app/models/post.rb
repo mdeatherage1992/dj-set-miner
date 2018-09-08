@@ -18,8 +18,9 @@ class Post < ActiveRecord::Base
   end
 end
 
-
-
+def next
+  self.class.where("id > ?", id).first
+end
 
 
 def self.by_genre(genre_id)

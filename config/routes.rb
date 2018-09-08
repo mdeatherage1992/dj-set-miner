@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
 
   get 'api/posts/:id', to: 'posts#api_show'
+  get 'api/posts/:id/next', to: 'posts#api_next'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
