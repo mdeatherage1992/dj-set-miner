@@ -23,6 +23,12 @@ class PostsController < ApplicationController
     if !params[:genre].blank?
       @posts = Post.by_genre(params[:genre].to_i)
     end
+    # render json: @posts
+  end
+
+  def api_index
+    @posts = Post.all
+    render json: @posts
   end
 
   def api_show

@@ -11,7 +11,11 @@
   <%= submit_tag 'Filter' %>
       <% end %>
 
+    <h3>Click the Button to see all Soundclouds! </h3>
+    <%= button_tag "View Videos", class: "view-videos" %>
 
+    <div id="video-dom">
+    </div>
 
 
 <% @posts.each do |post| %>
@@ -39,5 +43,3 @@
     </div>
    </div>
   <% end %>
-
-  

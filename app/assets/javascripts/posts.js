@@ -93,14 +93,7 @@ html =   `
   <h3> Author: ${this.user.email} </h3>
   <h7> Description: ${this.description} </h7>
   <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${this.url}"> </iframe>
-  <div class="comments">
-  <%= render "comments/comment" %>
-  </div>
 
-  <%= form_for(comment, :url => post_comments_path(${this})) do |f| %>
-  <%= f.text_area :body %><br>
-  <%= f.submit "Submit", data: { disable_with: false } %>
-  <% end %>
 
 
 
@@ -108,6 +101,43 @@ html =   `
   `
   return html
 }
+
+Post.prototype.indexerPost = function () {
+  let html = ''
+  html = `
+  <a href="${this.url}" </a>
+
+
+
+  `
+  return html
+}
+
+$(function(){
+  binder()
+})
+
+function binder() {
+  $('.view-videos').on('click', function() {
+    $.get('/api/posts', function(data) {
+      data.forEach(function(post){
+        var indexPost = new Post(post.id,post.title,post.url,post.comments)
+        $('#video-dom').append(indexPost.formatPost())
+      })
+    })
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
 // $(document).ready(function(){
 //   $('#new_comment').on("submit", function(e){
 //     $.ajax({
