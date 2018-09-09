@@ -44,6 +44,7 @@
 </h3>
 <p>
   <%= link_to "Hide Comments", post_comments_path(@post), :class => "hide_comments" %>
+  <%= link_to "Show Comments", post_comments_path(@post), :class => "load_comments" %>
 </p>
 <div class="comments">
 <%= render "comments/comment" %>
