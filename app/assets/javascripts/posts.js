@@ -22,7 +22,6 @@ $(function(){
 
 $(function(){
   $("#new_comment").on("submit", function(e){
-      e.preventDefault();
     url = this.action
     console.log(url)
 
@@ -32,6 +31,7 @@ $(function(){
         'body':$("#comment_body").val()
       }
     };
+
     $.ajax({
       type: "POST",
       url: url,
@@ -39,13 +39,36 @@ $(function(){
       success: function(response){
         $("#comment_body").val("");
         var $ol = $("div.comments ol")[0]
-        $ol.append($ol.children[0])
+        let newComment = new Comment(comment.id, comment.body, comment.post_id)
+        console.log(newComment)
+        $ol.append(newComment.commentPost())
+        // $ol.append($ol.children[0])
         //ol.append.child
         // $ol.append(response);
       }
     });
+      e.preventDefault();
   })
 });
+
+function Comment(id,body,post_id) {
+  this.id = id
+  this.body = body
+  this.post_id = post_id
+}
+
+Comment.prototype.indexerPost = function () {
+  let html = ''
+  html = `
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${this.url}"> </iframe>
+
+
+
+  `
+  return html
+}
+
+
 // work with class to make prototype methods
 // function Comment() {
 //   this.id = id
@@ -94,6 +117,8 @@ function Post(id,user,title,description,video, url, genres, comments) {
   this.genres = genres
   this.comments = comments
 }
+
+
 
 Post.prototype.formatPost = function () {
   let html = ''

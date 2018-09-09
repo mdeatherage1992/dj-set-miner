@@ -11,18 +11,26 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  # def create
+  #   @post = Post.find(params[:post_id])
+  #   @comment = @post.comments.create(comment_params)
+  #   @comment.user = current_user
+  #   respond_to do |format|
+  #     binding.pry
+  #     if @comment.save
+  #       format.json { render json: @comment, status: :created, location: @comment }
+  #     else
+  #       format.html { render action: "new" }
+  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.build(comment_params)
     @comment.user = current_user
-respond_to do |format|
-      if @comment.save
-        format.json { render json: @comment, status: :created, location: @comment }
-      else
-        format.html { render action: "new" }
-        format.json { redner json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @comment.save
+    redirect_to post_path(@post)
   end
 
   #
