@@ -31,8 +31,9 @@ $(function(){
       success: function(response){
         $("#comment_body").val("");
         var $ol = $("div.comments ol")[0]
+        $ol.append($ol.children[0])
         //ol.append.child
-        $ol.append(response);
+        // $ol.append(response);
       }
     });
   })
@@ -52,7 +53,7 @@ function bindClick() {
   $('.js-prev').on('click', function(e){
     $("#app-container").html('')
     const id = $(this).data('id')
-    fetch(`/api/posts/next`)
+    fetch(`/api/posts/${id - 1}`)
     .then(res => res.json() )
     .then(post=> {
       const newPost = new Post(post.id, post.user, post.title,post.description,post.url, post.video, post.genres, post.comments)
@@ -67,7 +68,7 @@ function bindClick() {
     fetch(`/api/posts/${id + 1}`)
     .then(res => res.json() )
     .then(post=> {
-      const newPost = new Post(post.id, post.user, post.title,post.description,post.url, post.video, post.genres, post.comments)
+      const newPost = new Post(post.id, post.user, post.title,post.description,post.url,post.video, post.genres, post.comments)
       $("#app-container").append(newPost.formatPost())
     })
     .catch(err => console.log(err))
@@ -105,7 +106,7 @@ html =   `
 Post.prototype.indexerPost = function () {
   let html = ''
   html = `
-  <a href="${this.url}" </a>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${this.url}"> </iframe>
 
 
 
@@ -121,8 +122,8 @@ function binder() {
   $('.view-videos').on('click', function() {
     $.get('/api/posts', function(data) {
       data.forEach(function(post){
-        var indexPost = new Post(post.id,post.title,post.url,post.comments)
-        $('#video-dom').append(indexPost.formatPost())
+        const indexPost =  new Post(post.id, post.user, post.title,post.description,post.url,post.video, post.genres, post.comments)
+        $('#video-dom').append(indexPost.indexerPost())
       })
     })
   })
