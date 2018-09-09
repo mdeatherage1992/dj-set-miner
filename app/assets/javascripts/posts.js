@@ -1,16 +1,24 @@
-$(document).ready(function(){
-  $("a.load_comments").on("click", function(e){
-    $.ajax({
-      method: "GET",
-      url: this.href
-    }).done(function(response){
+// $(document).ready(function(){
+//   $("a.load_comments").on("click", function(e){
+//     $.ajax({
+//       method: "GET",
+//       url: this.href
+//     }).done(function(response){
+//
+//       $("div.comments").html(response)
+//
+//     })
+//     e.preventDefault();
+//   })
+// })
 
-      $("div.comments").html(response)
-
-    })
+$(function(){
+  $("a.hide_comments").on("click", function(e){
     e.preventDefault();
+    $(".comments").html('')
   })
 })
+
 
 $(function(){
   $("#new_comment").on("submit", function(e){

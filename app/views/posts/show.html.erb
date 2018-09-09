@@ -43,7 +43,7 @@
  <%= @post.comments.count %> comments
 </h3>
 <p>
-  <%= link_to "Load Comments", post_comments_path(@post), :class => "load_comments" %>
+  <%= link_to "Hide Comments", post_comments_path(@post), :class => "hide_comments" %>
 </p>
 <div class="comments">
 <%= render "comments/comment" %>
