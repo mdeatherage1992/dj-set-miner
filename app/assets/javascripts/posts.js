@@ -1,11 +1,11 @@
-$(document).ready(function(){
+$(document).ready(function() {
   $("a.load_comments").on("click", function(e){
     $.ajax({
       method: "GET",
       url: this.href
-
     }).done(function(response){
-      $("div.comments").html(response.load("div.comments ol"))
+
+      $("div.comments").html(response).load("comments")
 
     })
     e.preventDefault();
@@ -126,6 +126,7 @@ function Post(id,user,title,description,video, url, genres, comments) {
 Post.prototype.formatPost = function () {
   let html = ''
 html =   `
+  <a href="${this.id}" id=><Back to Posts!</a>
   <h1> ${this.title} </h1>
   <h3> Author: ${this.user.email} </h3>
   <h7> Description: ${this.description} </h7>
