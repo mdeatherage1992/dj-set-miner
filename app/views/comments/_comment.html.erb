@@ -1,7 +1,7 @@
 <ol>
   <% @comments.each do |comment| %>
   <div>
-  <li><%= comment.body %></li>
+  <li><%= comment.body if !comment.body.blank? %></li>
   <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
   <% end %>

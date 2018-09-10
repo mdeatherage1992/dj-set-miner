@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @post.comments
+    render json: @comments
   end
 
   def new

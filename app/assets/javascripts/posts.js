@@ -4,7 +4,7 @@ $(document).ready(function() {
       method: "GET",
       url: this.href
     }).done(function(response){
-
+//for loop on response to append to div comments
       $("div.comments").html(response).load("comments")
 
     })
