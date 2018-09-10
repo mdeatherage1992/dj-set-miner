@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :api_show, :api_next]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :api_show, :api_next,:api_comments]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -34,6 +34,10 @@ class PostsController < ApplicationController
   def api_show
     # raise "hello".inspect
     render json: @post
+  end
+
+  def api_comments
+    render json: @post.comments
   end
 
   def api_next

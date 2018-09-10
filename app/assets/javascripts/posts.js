@@ -31,15 +31,15 @@ $(function(){
         'body':$("#comment_body").val()
       }
     };
-
     $.ajax({
       type: "POST",
       url: url,
       data: data,
       success: function(response){
         $("#comment_body").val("");
-        var $ol = $("div.comments ol")[0]
-        let newComment = new Comment(comment.id, comment.body, comment.post_id)
+        var $ol = $("div.comments ol")
+        console.log(data)
+        const newComment = new Comment(data['comment'])
         console.log(newComment)
         $ol.append(newComment.commentPost())
         // $ol.append($ol.children[0])
@@ -51,16 +51,19 @@ $(function(){
   })
 });
 
-function Comment(id,body,post_id) {
-  this.id = id
-  this.body = body
-  this.post_id = post_id
+class Comment {
+  constructor(data) {
+  this.id = data.id
+  this.body = data.body
+  this.post_id = data.post_id
+  }
 }
 
-Comment.prototype.indexerPost = function () {
+
+Comment.prototype.commentPost = function () {
   let html = ''
   html = `
-  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${this.url}"> </iframe>
+  ${this.body}
 
 
 
