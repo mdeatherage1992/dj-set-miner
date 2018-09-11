@@ -25,7 +25,6 @@ $(function(){
 $(function(){
   $("#new_comment").on("submit", function(e){
     url = this.action
-    console.log(url)
 
     data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
@@ -40,9 +39,7 @@ $(function(){
       success: function(response){
         $("#comment_body").val("");
         var $ol = $("div.comments ol")
-        console.log(data)
         const newComment = new Comment(data['comment'])
-        console.log(newComment)
         $ol.append(newComment.commentPost())
         // $ol.append($ol.children[0])
         //ol.append.child
