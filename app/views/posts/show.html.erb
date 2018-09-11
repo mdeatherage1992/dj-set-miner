@@ -46,10 +46,16 @@
   <%= link_to "Hide Comments", post_comments_path(@post), :class => "hide_comments" %>
   <%= link_to "Show Comments", post_comments_path(@post), :class => "load_comments" %>
 </p>
-<!-- <div class="comments" id="comment-block">
-<%= render "comments/comment" %>
-</div> -->
+<div class="comments" id="comment-block">
+  <ol>
+<!-- <%= render "comments/comment" %> -->
+</ol>
+</div>
 
+<%= form_for(@comment, :url => post_comments_path(@post)) do |f| %>
+<%= f.text_area :body %><br>
+<%= f.submit "Submit", data: { disable_with: false } %>
+<% end %>
 
 
 <%= button_tag 'Previous', class:"js-prev", data: {id: @post.id} %>

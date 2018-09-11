@@ -1,14 +1,16 @@
 $(document).ready(function() {
   $("a.load_comments").on("click", function(e){
+    e.preventDefault();
     $.ajax({
       method: "GET",
       url: this.href
     }).done(function(response){
-//for loop on response to append to div comments
-      $("div.comments").html(response).load("comments")
-
+      response.forEach(function (comment) {
+      $(".comments").append(`
+                    <li>${comment.body}</li>
+                        `)
+      });
     })
-    e.preventDefault();
   })
 })
 
