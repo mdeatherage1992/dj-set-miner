@@ -124,6 +124,7 @@ function Post(id,user,title,description,video, url, genres, comments) {
 
 Post.prototype.formatPost = function () {
   let html = ''
+  let back = ''
 html =   `
   <a href="${this.id}" id=><Back to Posts!</a>
   <h1> ${this.title} </h1>
@@ -135,8 +136,14 @@ html =   `
 
 
 
+
   `
-  return html
+  back = `
+  <a href='/posts/${this.id - 1}'>Back</a>
+
+  `
+
+  return html + back
 }
 
 Post.prototype.indexerPost = function () {

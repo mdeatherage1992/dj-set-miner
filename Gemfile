@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 
 #so that we can use the 'div_for' method
 gem 'record_tag_helper'
+gem 'puma'
 
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'sqlite3'
