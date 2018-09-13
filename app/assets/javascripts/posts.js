@@ -5,7 +5,17 @@ $(document).ready(function() {
       method: "GET",
       url: this.href
     }).done(function(response){
-      response.forEach(function (comment) {
+      response.sort(function(a, b) {
+        var commentA = a.body.toUpperCase(); // ignore upper and lowercase
+        var commentB = b.body.toUpperCase(); // ignore upper and lowercase
+        if (commentA < commentB) {
+          return -1;
+        }
+        if (commentA > commentB) {
+          return 1;
+        }
+        return 0;
+      }).forEach(function (comment) {
       $(".comments").append(`
                     <li>${comment.body}</li>
                         `)
@@ -24,9 +34,9 @@ $(function(){
 
 $(function(){
   $("#new_comment").on("submit", function(e){
-    url = this.action
+    const url = this.action
 
-    data = {
+    const data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
       'comment': {
         'body':$("#comment_body").val()
@@ -50,13 +60,13 @@ $(function(){
   })
 });
 
-class Comment {
-  constructor(data) {
-  this.id = data.id
-  this.body = data.body
-  this.post_id = data.post_id
-  }
-}
+// class Comment {
+//   constructor(data) {
+//   this.id = data.id
+//   this.body = data.body
+//   this.post_id = data.post_id
+//   }
+// }
 
 
 Comment.prototype.commentPost = function () {
@@ -64,19 +74,18 @@ Comment.prototype.commentPost = function () {
   html = `
   ${this.body}
 
-
-
   `
   return html
 }
 
 
-// work with class to make prototype methods
-// function Comment() {
-//   this.id = id
-//   this.body = body
-//   this.post_id = post_id
-// }
+function Comment(data) {
+  this.id = data.id
+  this.body = data.body
+  this.post_id = data.post_id
+}
+
+
 
 $(function(){
   bindClick()
